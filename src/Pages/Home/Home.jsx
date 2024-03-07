@@ -1,9 +1,12 @@
-import React from "react";
+import Destination from "../../Sheard/Destination/Destination";
+import Halmate from "../../Sheard/Halmate";
 
 const Home = () => {
   return (
     <div>
-      <h1>this is home page</h1>
+      <Halmate title={"home"} name={"travelwp"} />
+
+      <Destination></Destination>
     </div>
   );
 };

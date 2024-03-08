@@ -24,8 +24,6 @@ const Card = () => {
   };
   return (
     <div>
-      <h1>total {card.length}</h1>
-
       <div className="grid md:grid-cols-3 justify-center gap-4">
         {card.map((item) => (
           <div key={item.id} className="card w-[350px] bg-base-100 shadow-xl">
@@ -41,7 +39,7 @@ const Card = () => {
               </span>
             </button>
             <div className="card-body">
-              <h2 className="card-title">
+              <h2 className="card-title text-left">
                 {item.heading1}
                 <div className="badge badge-secondary">{item.price}</div>
               </h2>

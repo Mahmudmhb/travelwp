@@ -1,0 +1,10 @@
+.tourtype {
+    background-image: url('https://roam.qodeinteractive.com/wp-content/uploads/2017/08/destitnation-title-img-5.jpg');
+    background-image: fixed;
+    background-position: center;
+
+}
+
+.active {
+    background-color: red;
+}

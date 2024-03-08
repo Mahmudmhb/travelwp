@@ -25,7 +25,7 @@ const Navber = () => {
     </>
   );
   return (
-    <div className="">
+    <div className="border-b-2">
       <div className="bg-[#414b4f]">
         <div className="flex items-center justify-between w-5/6 mx-auto h-12 text-white">
           <h1 className="flex items-center gap-3">

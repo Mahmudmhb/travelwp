@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../UseProvider/useAxiosPublic/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 const Tourgaide = () => {
   const [tourgaide, setTourgaite] = useState([]);
@@ -10,7 +11,7 @@ const Tourgaide = () => {
     });
   }, [axiosPublic]);
   return (
-    <div>
+    <div className="mb-20">
       <div className="grid md:grid-cols-4 justify-center gap-3">
         {tourgaide.map((tour) => (
           <div key={tour.id} className="card w-[270px] bg-base-100 shadow-xl">
@@ -21,7 +22,10 @@ const Tourgaide = () => {
               <h2 className="card-title">{tour.name}</h2>
               <p>{tour.about.slice(0, 50)}</p>
               <div className="card-actions">
-                <button className="btn btn-primary">Details</button>
+                <Link to={`/tourgaidedetails/${tour._id}`}>
+                  {" "}
+                  <button className="btn btn-primary">Details</button>
+                </Link>
               </div>
             </div>
           </div>

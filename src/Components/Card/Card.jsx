@@ -1,11 +1,13 @@
-import axios from "axios";
 import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../UseProvider/useAxiosPublic/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 const Card = () => {
   const [card, setCard] = useState([]);
-  axios.get("/public/Packages.json").then((res) => {
+  const axiosPublic = useAxiosPublic();
+  axiosPublic.get("/packages").then((res) => {
     setCard(res.data);
   });
 
@@ -24,7 +26,7 @@ const Card = () => {
     <div>
       <h1>total {card.length}</h1>
 
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-3 justify-center gap-4">
         {card.map((item) => (
           <div key={item.id} className="card w-[350px] bg-base-100 shadow-xl">
             <figure className="relative">
@@ -45,7 +47,10 @@ const Card = () => {
               </h2>
               <p>{item.description}</p>
               <div className="card-actions justify-end">
-                <button className="badge badge-outline">View Package</button>
+                <Link to={`/packages/${item._id}`}>
+                  {" "}
+                  <button className="badge badge-outline">View Package</button>
+                </Link>
                 <button className="badge badge-outline">My Wishlist</button>
               </div>
             </div>

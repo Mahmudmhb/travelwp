@@ -6,6 +6,8 @@ import Blogs from "../Pages/Blogs/Blogs";
 import AboutUs from "../Pages/AboutUs,/AboutUs";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
+import CardDetails from "../Components/Card/CardDetails";
+import AllPackages from "../Pages/AllPackages/AllPackages";
 
 const router = createBrowserRouter([
   {
@@ -29,12 +31,20 @@ const router = createBrowserRouter([
         element: <AboutUs></AboutUs>,
       },
       {
+        path: "/allpackages",
+        element: <AllPackages></AllPackages>,
+      },
+      {
         path: "/login",
         element: <Login></Login>,
       },
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/packages/:id",
+        element: <CardDetails></CardDetails>,
       },
     ],
   },

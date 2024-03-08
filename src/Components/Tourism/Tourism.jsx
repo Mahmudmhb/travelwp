@@ -4,6 +4,9 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import Card from "../Card/Card";
+import { Link } from "react-router-dom";
+import TourType from "../TourType/TourType";
+import Tourgaide from "../Tourgaide/Tourgaide";
 
 const Tourism = () => {
   return (
@@ -77,13 +80,18 @@ const Tourism = () => {
             </div>
           </div>
         </TabPanel>
-        <TabPanel>
-          <h2>
+        <TabPanel className="my-5">
+          <h2 className="text-center">
             <Card></Card>
+            <Link to="/allpackages">
+              <button className="btn btn-primary my-5 text-center">
+                All Packages
+              </button>
+            </Link>
           </h2>
         </TabPanel>
         <TabPanel>
-          <h2>Any content 3</h2>
+          <Tourgaide></Tourgaide>
         </TabPanel>
       </Tabs>
     </div>

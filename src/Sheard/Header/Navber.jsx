@@ -11,6 +11,9 @@ const Navber = () => {
         <NavLink to="/community"> Community</NavLink>
       </li>
       <li>
+        <NavLink to="/allpackages"> All Packages</NavLink>
+      </li>
+      <li>
         <NavLink to="/aboutus"> About Us</NavLink>
       </li>
       <li>

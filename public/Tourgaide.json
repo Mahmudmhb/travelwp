@@ -1,0 +1,47 @@
+[
+    {
+      "id": 1,
+      "name": "Alicia Mckenzie",
+      "job": "Project Coordinator",
+      "about": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet maurismorbi accumsan ipsum",
+      "email": "roam@qodeinteractive.com",
+      "phone": "+1 (555) 123-4567",
+      "born": "January 1, 1990",
+      "education": " University of Chicago",
+      "image": "https://roam.qodeinteractive.com/wp-content/uploads/2017/08/team-member-3.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "job": "Data Scientist",
+      "about": "Analyzing data to extract valuable insights.",
+      "email": "jane.smith@example.com",
+      "phone": "+1 (555) 987-6543",
+      "born": "March 15, 1985",
+      "education": "Master's in Statistics",
+      "image": "https://roam.qodeinteractive.com/wp-content/uploads/2017/08/team-member-4.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Derek Horton",
+      "job": "Data Scientist",
+      "about": "Analyzing data to extract valuable insights.",
+      "email": "jane.smith@example.com",
+      "phone": "+1 (555) 987-6543",
+      "born": "March 15, 1985",
+      "education": "Master's in Statistics",
+      "image": "https://roam.qodeinteractive.com/wp-content/uploads/2017/08/team-member-2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Brenda Sherman",
+      "job": "Data Scientist",
+      "about": "Analyzing data to extract valuable insights.",
+      "email": "jane.smith@example.com",
+      "phone": "+1 (555) 987-6543",
+      "born": "March 15, 1985",
+      "education": "Master's in Statistics",
+      "image": "https://roam.qodeinteractive.com/wp-content/uploads/2017/08/team-member-1.jpg"
+    }
+  ]
+  

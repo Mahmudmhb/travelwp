@@ -11,7 +11,7 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 
 const Slider = () => {
   return (
-    <div className=" -mt-20 ">
+    <div className="  ">
       <Swiper
         cssMode={true}
         navigation={true}
@@ -19,14 +19,14 @@ const Slider = () => {
         mousewheel={true}
         keyboard={true}
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className="mySwiper h-[80vh]"
+        className="mySwiper h-[100vh]"
       >
         <SwiperSlide>
           <div className="relative">
             <img
               src="https://travelwp.physcode.com/wp-content/uploads/revslider/slider-home/slider-1.jpg"
               alt=""
-              className="h-[80vh] w-full"
+              className="h-[100vh] w-full"
             />
           </div>
 
@@ -43,7 +43,7 @@ const Slider = () => {
           <img
             src="https://travelwp.physcode.com/wp-content/uploads/revslider/slider-home/slider-2.jpeg"
             alt=""
-            className="h-[80vh] w-full"
+            className="h-[100vh] w-full"
           />
           <div className="absolute top-1/3 ml-32 mx-auto ">
             <h1 className="text-white">FEATURED TRIP</h1>
@@ -57,7 +57,7 @@ const Slider = () => {
           <img
             src="https://travelwp.physcode.com/wp-content/uploads/revslider/slider-home/slider-3.jpeg"
             alt=""
-            className="h-[80vh] w-full"
+            className="h-[100vh] w-full"
           />
           <div className="absolute top-1/3 ml-32 mx-auto ">
             <h1 className="text-white">FEATURED TRIP</h1>

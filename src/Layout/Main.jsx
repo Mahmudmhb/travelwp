@@ -1,7 +1,6 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import Navber from "../Sheard/Header/Navber";
-import Slider from "../Components/Slider/Slider";
+import Footer from "../Sheard/Footer/Footer";
 
 const Main = () => {
   return (
@@ -9,6 +8,7 @@ const Main = () => {
       <Navber></Navber>
 
       <Outlet></Outlet>
+      <Footer></Footer>
     </div>
   );
 };

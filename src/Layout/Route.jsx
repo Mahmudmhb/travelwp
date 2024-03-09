@@ -9,7 +9,7 @@ import Register from "../Pages/Login/Register";
 import CardDetails from "../Components/Card/CardDetails";
 import AllPackages from "../Pages/AllPackages/AllPackages";
 import TourGaideDetails from "../Components/Tourgaide/TourGaideDetails";
-
+import BlogDetails from "../Pages/Blogs/BLogDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -50,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/tourgaidedetails/:id",
         element: <TourGaideDetails></TourGaideDetails>,
+      },
+      {
+        path: "/touristblogs/:id",
+        element: <BlogDetails></BlogDetails>,
       },
     ],
   },

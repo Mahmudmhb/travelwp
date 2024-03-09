@@ -1,9 +1,9 @@
-import React from "react";
+import TouristBlogs from "./TouristBlogs";
 
 const Blogs = () => {
   return (
     <div>
-      <h1>this is blogs page</h1>
+      <TouristBlogs></TouristBlogs>
     </div>
   );
 };

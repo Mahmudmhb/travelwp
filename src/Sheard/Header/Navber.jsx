@@ -1,5 +1,6 @@
 import { FaClock, FaLocationArrow, FaPhoneVolume } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import LoginModel from "../../Components/Model/LoginModel";
 
 const Navber = () => {
   const nav = (
@@ -20,7 +21,8 @@ const Navber = () => {
         <NavLink to="/blogs"> Blogs</NavLink>
       </li>
       <li>
-        <NavLink to="/login"> Login/Register</NavLink>
+        {" "}
+        <LoginModel></LoginModel>
       </li>
     </>
   );

@@ -3,6 +3,7 @@ import useAxiosPublic from "../../UseProvider/useAxiosPublic/useAxiosPublic";
 import { useEffect, useState } from "react";
 import ShearSlider from "../../Sheard/ShearSlider/ShearSlider";
 import Heading from "../../Sheard/Heading/Heading";
+import Booking from "../Booking/Booking";
 
 const CardDetails = () => {
   const [details, setDetails] = useState([]);
@@ -108,6 +109,7 @@ const CardDetails = () => {
               </div>
             ))}
           </div>
+          <Booking></Booking>
         </div>
       </div>
     </div>

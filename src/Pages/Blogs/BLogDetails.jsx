@@ -55,6 +55,7 @@ import {
   WorkplaceShareButton,
   XIcon,
 } from "react-share";
+import Heading from "../../Sheard/Heading/Heading";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -70,16 +71,30 @@ const BlogDetails = () => {
   const {
     authorName,
     image,
+    date,
     heading,
     subheading,
     description,
+    authorImage,
     shortDescription,
   } = details;
 
   return (
     <div className="w-5/6 mx-auto my-20 space-y-6">
+      <Heading heading={"Tourist Story"}></Heading>
+      <h1 className="text-3xl font-bold">{heading}</h1>
+
       <img src={image} alt="" className="mx-auto" />
-      <h1 className="text-center">Author Name:{authorName}</h1>
+      <div className="flex gap-3 items-center justify-center">
+        <img
+          src={authorImage}
+          alt={authorName}
+          className="w-14 h-14 rounded-full  "
+        />
+        <h1 className="text-center">Author Name: {authorName}</h1>
+
+        <h1>{date}</h1>
+      </div>
       <div className="flex gap-4 justify-center">
         <h1>If you want to share?</h1>
         <FacebookShareButton

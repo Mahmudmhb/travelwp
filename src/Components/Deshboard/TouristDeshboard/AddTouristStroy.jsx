@@ -19,11 +19,11 @@ const AddTouristStroy = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     // console.log(startDate);
 
     const imagefile = { image: data.image[0] };
-    console.log(imagefile);
+    // console.log(imagefile);
     const res = await axiosPublic.post(image_link, imagefile, {
       headers: {
         "content-type": "multipart/form-data",
@@ -31,26 +31,33 @@ const AddTouristStroy = () => {
     });
 
     const image = res.data.data.display_url;
-    console.log(image, data);
+    // console.log(image, data);
     if (res.data.success) {
       const tourStory = {
         authorName: user.displayName,
         authorEmail: user.email,
         image: image,
         date: startDate,
-        discription: data.descripton,
+        description: data.descripton,
         heading: data.heading,
         authorImage: user.Photo_URL,
+        shortDescription: data.shortDescription,
+        subheading: data.subheading,
       };
 
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: `${data.heading} Your Story SuccessFully Done `,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      console.log(tourStory);
+      const res = await axiosPublic.post("/touristblogs", tourStory);
+      console.log(res.data);
+      if (res.data.insertedId) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${data.heading} Your Story SuccessFully Done `,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+
+      //   console.log(tourStory);
     }
   };
 
@@ -58,7 +65,7 @@ const AddTouristStroy = () => {
     <div className="w-5/6 mx-auto">
       <Heading heading={"Add your stroy"}></Heading>
       <form onSubmit={handleSubmit(onSubmit)} className="my-5">
-        <div className="flex gap-5">
+        {/* <div className="flex gap-5">
           <input
             type="text"
             placeholder="Name"
@@ -72,12 +79,18 @@ const AddTouristStroy = () => {
             value={user?.email}
             className="py-2 px-2 w-full border border-[#ffb300] rounded-lg"
           />
-        </div>
+        </div> */}
 
         <input
           type="text"
           placeholder="Heading"
           {...register("heading")}
+          className="py-2 px-2 w-full my-5 border border-[#ffb300] rounded-lg"
+        />
+        <input
+          type="text"
+          placeholder="subheading"
+          {...register("sub heading")}
           className="py-2 px-2 w-full my-5 border border-[#ffb300] rounded-lg"
         />
         <div className="flex gap-4 items-center my-5 ">
@@ -94,10 +107,19 @@ const AddTouristStroy = () => {
         </div>
 
         <textarea
+          name="shortDescription"
+          placeholder="Short Description your Story"
+          id=""
+          cols="2"
+          {...register("shortDescription")}
+          rows="3"
+          className="py-2 px-2 w-full border border-[#ffb300] rounded-lg"
+        ></textarea>
+        <textarea
           name="descripton"
           placeholder="Details your Story"
           id=""
-          cols="10"
+          cols="5"
           {...register("descripton")}
           rows="5"
           className="py-2 px-2 w-full border border-[#ffb300] rounded-lg"

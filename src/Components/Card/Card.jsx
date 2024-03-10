@@ -2,31 +2,62 @@ import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../UseProvider/useAxiosPublic/useAxiosPublic";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth/useAuth";
 
 const Card = () => {
+  // const navigate = useNavigate();
+  const { user } = useAuth();
   const [card, setCard] = useState([]);
   const axiosPublic = useAxiosPublic();
   axiosPublic.get("/packages").then((res) => {
     setCard(res.data);
   });
 
-  const handleaddtoCart = (item) => {
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: `${item.heading1} save to cart`,
-      showConfirmButton: false,
-      timer: 1500,
-    });
+  const handleaddtoCart = async (item) => {
+    if (user) {
+      const MyWishlist = {
+        name: item.heading1,
+        price: item.price,
+        image: item.image1,
+        userEmail: user.email,
+        userName: user.displayName,
+      };
+      const res = await axiosPublic.post("/mywishlist", MyWishlist);
+      console.log(res.data);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `${item.heading1} save to cart`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    // Swal.fire({
+    //   title: "Are you sure?",
+    //   text: "You won't be able to revert this!",
+    //   icon: "warning",
+    //   showCancelButton: true,
+    //   confirmButtonColor: "#3085d6",
+    //   cancelButtonColor: "#d33",
+    //   confirmButtonText: "Yes, delete it!",
+    // })
+    // .then((result) => {
+    //   if (user) {
+    //     if (result.isConfirmed) {
 
-    console.log(item);
+    //       console.log(item);
+    //     }
+    //   } else {
+    //     navigate("/login");
+    //   }
+    // });
   };
   return (
     <div>
       <div className="grid md:grid-cols-3 justify-center gap-4">
         {card.map((item) => (
-          <div key={item.id} className="card w-[350px] bg-base-100 shadow-xl">
+          <div key={item._id} className="card w-[350px] bg-base-100 shadow-xl">
             <figure className="relative">
               <img src={item.image1} alt="Shoes" />
             </figure>

@@ -24,7 +24,7 @@ const TouristBlogs = () => {
       </h1>
       <div className="grid md:grid-cols-3 justify-center gap-4">
         {blogs.map((blog) => (
-          <div key={blog.id} className=" w-[350px] border-8">
+          <div key={blog._id} className=" w-[350px] border-8">
             <img
               src={blog.image}
               alt="Shoes"

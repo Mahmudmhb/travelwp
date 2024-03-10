@@ -1,6 +1,7 @@
 import AddTouristStroy from "./AddTouristStroy";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import MyBooking from "../MyBooking/MyBooking";
 
 const TouristProfile = () => {
   const { user } = useAuth();
@@ -31,7 +32,7 @@ const TouristProfile = () => {
         </TabList>
 
         <TabPanel className="my-20">
-          <h1>this is sdjgdfsagta</h1>
+          <MyBooking></MyBooking>
         </TabPanel>
         <TabPanel className="my-5">
           <h2 className="text-center">this is backe</h2>

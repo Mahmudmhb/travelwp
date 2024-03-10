@@ -51,6 +51,7 @@ const Booking = () => {
         bookingName: details.heading1,
         gaideName: data.gaidename,
         date: startDate,
+        status: "In Review",
       };
       // console.log(booking);
       const res = await axiosPublic.post("/booking", booking);

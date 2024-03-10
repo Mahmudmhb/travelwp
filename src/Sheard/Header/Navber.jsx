@@ -20,10 +20,6 @@ const Navber = () => {
       <li>
         <NavLink to="/blogs"> Blogs</NavLink>
       </li>
-      <li>
-        {" "}
-        <LoginModel></LoginModel>
-      </li>
     </>
   );
   return (
@@ -78,8 +74,10 @@ const Navber = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{nav}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end gap-3">
+          <LoginModel></LoginModel>
+
+          <NavLink to="/register"> Register</NavLink>
         </div>
       </div>
     </div>

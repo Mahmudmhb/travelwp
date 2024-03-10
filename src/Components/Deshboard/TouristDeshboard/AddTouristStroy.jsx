@@ -3,13 +3,56 @@ import useAuth from "../../../Hooks/useAuth/useAuth";
 import { useForm } from "react-hook-form";
 import Heading from "../../../Sheard/Heading/Heading";
 import DatePicker from "react-datepicker";
+import useAxiosPublic from "../../../UseProvider/useAxiosPublic/useAxiosPublic";
+import Swal from "sweetalert2";
+
+const image_key = import.meta.env.VITE_imgdb_key;
+// const image_url = `https://api.imgbb.com/1/upload?key=${image_key}`;
+// console.log(image_key, image_url);
+const image_link = `https://api.imgbb.com/1/upload?key=${image_key}`;
 
 const AddTouristStroy = () => {
   const { user } = useAuth();
-  console.log(user);
+  const axiosPublic = useAxiosPublic();
+
+  //   console.log(user);
   const [startDate, setStartDate] = useState(new Date());
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data);
+    // console.log(startDate);
+
+    const imagefile = { image: data.image[0] };
+    console.log(imagefile);
+    const res = await axiosPublic.post(image_link, imagefile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+
+    const image = res.data.data.display_url;
+    console.log(image, data);
+    if (res.data.success) {
+      const tourStory = {
+        authorName: user.displayName,
+        authorEmail: user.email,
+        image: image,
+        date: startDate,
+        discription: data.descripton,
+        heading: data.heading,
+        authorImage: user.Photo_URL,
+      };
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `${data.heading} Your Story SuccessFully Done `,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      console.log(tourStory);
+    }
+  };
 
   return (
     <div className="w-5/6 mx-auto">
@@ -34,11 +77,13 @@ const AddTouristStroy = () => {
         <input
           type="text"
           placeholder="Heading"
+          {...register("heading")}
           className="py-2 px-2 w-full my-5 border border-[#ffb300] rounded-lg"
         />
         <div className="flex gap-4 items-center my-5 ">
           <input
             type="file"
+            {...register("image")}
             className="file-input my-3 border border-[#ffb300] rounded-lg w-full max-w-xs"
           />
           <DatePicker
@@ -53,6 +98,7 @@ const AddTouristStroy = () => {
           placeholder="Details your Story"
           id=""
           cols="10"
+          {...register("descripton")}
           rows="5"
           className="py-2 px-2 w-full border border-[#ffb300] rounded-lg"
         ></textarea>

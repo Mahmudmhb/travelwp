@@ -1,8 +1,14 @@
 import { FaClock, FaLocationArrow, FaPhoneVolume } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import LoginModel from "../../Components/Model/LoginModel";
+import useAuth from "../../Hooks/useAuth/useAuth";
 
 const Navber = () => {
+  const { user, handleLogOut } = useAuth();
+
+  const handleSignOut = () => {
+    handleLogOut().then().catch();
+  };
   const nav = (
     <>
       <li>
@@ -74,11 +80,40 @@ const Navber = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{nav}</ul>
         </div>
-        <div className="navbar-end gap-3">
-          <LoginModel></LoginModel>
+        {user ? (
+          <>
+            <div className="dropdown dropdown-hover">
+              <div tabIndex={0} role="button" className="btn  m-1">
+                Dashboard
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link to="/touristprofile"> My Profile</Link>
+                </li>
+                <li>
+                  <Link to="/turistbooking"> My Bookings</Link>
+                </li>
+                <li>
+                  <a>My Wishlist</a>
+                </li>
+                <li>
+                  <button onClick={handleSignOut}>LogOut</button>
+                </li>
+              </ul>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="navbar-end gap-3">
+              <LoginModel></LoginModel>
 
-          <NavLink to="/register"> Register</NavLink>
-        </div>
+              <NavLink to="/register"> Register</NavLink>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

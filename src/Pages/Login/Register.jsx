@@ -16,20 +16,22 @@ const Register = () => {
     handleRegisterWithEmailAndPass(email, password)
       .then((result) => {
         console.log(result.user);
-        handleUpdate(name, Photourl).then((result) => {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `${result.user.displayName} SuccessFully Register !!`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        });
+        handleUpdate(name, Photourl)
+          .then((result) => {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `${result.user.displayName} SuccessFully Register !!`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          })
+          .catch();
       })
       .catch((error) => {
         console.log(error);
         Swal.fire({
-          position: "top-center",
+          position: "center",
           icon: "error",
           title: `${error.message}  !!`,
           showConfirmButton: false,

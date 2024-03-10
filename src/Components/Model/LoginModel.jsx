@@ -1,10 +1,35 @@
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth/useAuth";
+import Swal from "sweetalert2";
 
 const LoginModel = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { handleLogin } = useAuth();
+  const onSubmit = (data) => {
+    const password = data.password;
+    const email = data.email;
+    handleLogin(email, password)
+      .then((result) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${result.user.displayName} SuccessFully Login !!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "top-center",
+          icon: "error",
+          title: `${error.message}  !!`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
+  };
   return (
     <div>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}

@@ -10,6 +10,8 @@ import CardDetails from "../Components/Card/CardDetails";
 import AllPackages from "../Pages/AllPackages/AllPackages";
 import TourGaideDetails from "../Components/Tourgaide/TourGaideDetails";
 import BlogDetails from "../Pages/Blogs/BLogDetails";
+import TouristProfile from "../Components/Deshboard/TouristDeshboard/TouristProfile";
+import AddTouristStroy from "../Components/Deshboard/TouristDeshboard/AddTouristStroy";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,6 +56,14 @@ const router = createBrowserRouter([
       {
         path: "/touristblogs/:id",
         element: <BlogDetails></BlogDetails>,
+      },
+      {
+        path: "/touristprofile",
+        element: <TouristProfile></TouristProfile>,
+      },
+      {
+        path: "/addtoriststory",
+        element: <AddTouristStroy></AddTouristStroy>,
       },
     ],
   },

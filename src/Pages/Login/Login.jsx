@@ -2,10 +2,36 @@ import { useForm } from "react-hook-form";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Heading from "../../Sheard/Heading/Heading";
+import useAuth from "../../Hooks/useAuth/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { handleLogin } = useAuth();
+
+  const onSubmit = (data) => {
+    const password = data.password;
+    const email = data.email;
+    handleLogin(email, password)
+      .then((result) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${result.user.displayName} SuccessFully Login !!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "top-center",
+          icon: "error",
+          title: `${error.message}  !!`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
+  };
   return (
     <div className="flex justify-center items-center w-5/6 mx-auto my-20">
       <div className=" p-5">

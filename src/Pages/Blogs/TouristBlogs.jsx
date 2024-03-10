@@ -14,7 +14,7 @@ const TouristBlogs = () => {
       setBlogs(res.data);
     });
   }, [axiosPublic]);
-  console.log(blogs);
+  // console.log(blogs);
   return (
     <div className="w-5/6 mx-auto text-center">
       <Heading heading={"Tourist BLogs"}> </Heading>

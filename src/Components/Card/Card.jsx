@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
 
 const Card = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [card, setCard] = useState([]);
   const axiosPublic = useAxiosPublic();
@@ -32,26 +32,21 @@ const Card = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+    } else {
+      Swal.fire({
+        title: "Are you  Want to Add Wishlist ?",
+        text: "Please Login !",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      });
     }
-    // Swal.fire({
-    //   title: "Are you sure?",
-    //   text: "You won't be able to revert this!",
-    //   icon: "warning",
-    //   showCancelButton: true,
-    //   confirmButtonColor: "#3085d6",
-    //   cancelButtonColor: "#d33",
-    //   confirmButtonText: "Yes, delete it!",
-    // })
-    // .then((result) => {
-    //   if (user) {
-    //     if (result.isConfirmed) {
-
-    //       console.log(item);
-    //     }
-    //   } else {
-    //     navigate("/login");
-    //   }
-    // });
   };
   return (
     <div>

@@ -10,7 +10,7 @@ const CardDetails = () => {
   const [tourgaide, setTourgaite] = useState([]);
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   useEffect(() => {
     axiosPublic(`/packages/${id}`).then((res) => {
       setDetails(res.data);

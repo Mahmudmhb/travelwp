@@ -80,9 +80,9 @@ const Navber = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{nav}</ul>
         </div>
-        {user ? (
+        {user?.email ? (
           <>
-            <div className="dropdown dropdown-hover">
+            <div className="dropdown dropdown-bottom">
               <div tabIndex={0} role="button" className="btn  m-1">
                 Dashboard
               </div>
@@ -100,7 +100,9 @@ const Navber = () => {
                   <a>My Wishlist</a>
                 </li>
                 <li>
-                  <button onClick={handleSignOut}>LogOut</button>
+                  <Link>
+                    <button onClick={handleSignOut}>LogOut</button>
+                  </Link>
                 </li>
               </ul>
             </div>

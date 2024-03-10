@@ -64,11 +64,12 @@ const LoginModel = () => {
                 {...register("password")}
               />
 
-              <input
+              <button
                 type="submit"
-                value="Login"
                 className="w-full border-[#ffb300] text-xl py-2 my-5 rounded-lg  bg-[#ffb300] shadow-xl  text-white hover:text-xl duration-700"
-              />
+              >
+                Login{" "}
+              </button>
             </form>
             <h1>
               New here?{" "}

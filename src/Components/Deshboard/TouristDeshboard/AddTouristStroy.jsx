@@ -65,21 +65,7 @@ const AddTouristStroy = () => {
     <div className="w-5/6 mx-auto">
       <Heading heading={"Add your stroy"}></Heading>
       <form onSubmit={handleSubmit(onSubmit)} className="my-5">
-        {/* <div className="flex gap-5">
-          <input
-            type="text"
-            placeholder="Name"
-            disabled
-            value={user?.displayName}
-            className="py-2 px-2 w-full  border border-[#ffb300] rounded-lg"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={user?.email}
-            className="py-2 px-2 w-full border border-[#ffb300] rounded-lg"
-          />
-        </div> */}
+        {/* > */}
 
         <input
           type="text"

@@ -12,6 +12,7 @@ import TourGaideDetails from "../Components/Tourgaide/TourGaideDetails";
 import BlogDetails from "../Pages/Blogs/BLogDetails";
 import TouristProfile from "../Components/Deshboard/TouristDeshboard/TouristProfile";
 import AddTouristStroy from "../Components/Deshboard/TouristDeshboard/AddTouristStroy";
+import MyBooking from "../Components/Deshboard/MyBooking/MyBooking";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "/addtoriststory",
         element: <AddTouristStroy></AddTouristStroy>,
+      },
+      {
+        path: "/turistbooking",
+        element: <MyBooking></MyBooking>,
       },
     ],
   },

@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
   };
   const handleUpdate = (name, photourl) => {
     setIsloading(true);
-    updateProfile(auth.currentUser, {
+    return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photourl,
     });
@@ -33,19 +33,19 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const handleLogOut = () => {
+    setIsloading(true);
+
+    return signOut(auth);
+  };
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-      }
+      setUser(currentUser);
+
       setIsloading(false);
     });
     return () => unSubscribe();
   }, []);
-
-  const handleLogOut = () => {
-    return signOut(auth);
-  };
 
   const authInfo = {
     handleRegisterWithEmailAndPass,

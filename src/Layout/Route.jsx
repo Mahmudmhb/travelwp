@@ -13,6 +13,8 @@ import BlogDetails from "../Pages/Blogs/BLogDetails";
 import TouristProfile from "../Components/Deshboard/TouristDeshboard/TouristProfile";
 import AddTouristStroy from "../Components/Deshboard/TouristDeshboard/AddTouristStroy";
 import MyBooking from "../Components/Deshboard/MyBooking/MyBooking";
+import MyWishlist from "../Components/Deshboard/MyWishlist/MyWishlist";
+import PrivateRoute from "../Route/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,11 +50,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/packages/:id",
-        element: <CardDetails></CardDetails>,
+        element: <PrivateRoute></PrivateRoute>,
       },
       {
         path: "/tourgaidedetails/:id",
-        element: <TourGaideDetails></TourGaideDetails>,
+        element: (
+          <PrivateRoute>
+            <TourGaideDetails></TourGaideDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/touristblogs/:id",
@@ -60,15 +66,37 @@ const router = createBrowserRouter([
       },
       {
         path: "/touristprofile",
-        element: <TouristProfile></TouristProfile>,
+        element: (
+          <PrivateRoute>
+            <TouristProfile></TouristProfile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/addtoriststory",
-        element: <AddTouristStroy></AddTouristStroy>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AddTouristStroy></AddTouristStroy>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/turistbooking",
-        element: <MyBooking></MyBooking>,
+        element: (
+          <PrivateRoute>
+            <MyBooking></MyBooking>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/mywishlist",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MyWishlist></MyWishlist>
+          </PrivateRoute>
+        ),
       },
     ],
   },

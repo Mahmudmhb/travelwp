@@ -97,7 +97,7 @@ const Navber = () => {
                   <Link to="/turistbooking"> My Bookings</Link>
                 </li>
                 <li>
-                  <a>My Wishlist</a>
+                  <Link to="/mywishlist">My Wishlist</Link>
                 </li>
                 <li>
                   <Link>

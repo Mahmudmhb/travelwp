@@ -1,6 +1,7 @@
 [
     {
       "id": 1,
+      "role": "tourduide",
       "name": "Alicia Mckenzie",
       "job": "Project Coordinator",
       "about": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet maurismorbi accumsan ipsum",
@@ -12,6 +13,7 @@
     },
     {
       "id": 2,
+      "role": "tourduide",
       "name": "Jane Smith",
       "job": "Data Scientist",
       "about": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet maurismorbi accumsan ipsum",
@@ -23,6 +25,7 @@
     },
     {
       "id": 3,
+      "role": "tourduide",
       "name": "Derek Horton",
       "job": "Data Scientist",
       "about": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet maurismorbi accumsan ipsum",
@@ -33,7 +36,8 @@
       "image": "https://roam.qodeinteractive.com/wp-content/uploads/2017/08/team-member-2.jpg"
     },
     {
-      "id": 3,
+      "id": 4,
+      "role": "tourduide",
       "name": "Brenda Sherman",
       "job": "Data Scientist",
       "about": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet maurismorbi accumsan ipsum",

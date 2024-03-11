@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Heading from "../../Sheard/Heading/Heading";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import Swal from "sweetalert2";
@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 const Register = () => {
   const { handleRegisterWithEmailAndPass, handleUpdate } = useAuth();
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     const name = data.name;
     const password = data.password;
@@ -27,6 +28,7 @@ const Register = () => {
             });
           })
           .catch();
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);

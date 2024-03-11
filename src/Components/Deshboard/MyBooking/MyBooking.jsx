@@ -9,7 +9,7 @@ const MyBooking = () => {
   const res = axiosPublic.get("/booking").then((res) => {
     setBooking(res.data);
   });
-  console.log(bookings);
+  // console.log(bookings);
   const totalPrice = bookings.reduce((total, item) => total + item.price, 0);
 
   return (

@@ -2,9 +2,11 @@ import { FaClock, FaLocationArrow, FaPhoneVolume } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import LoginModel from "../../Components/Model/LoginModel";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import useQueryUser from "../../UseProvider/useQuery/useQuery";
 
 const Navber = () => {
   const { user, handleLogOut } = useAuth();
+  const [users] = useQueryUser();
 
   const handleSignOut = () => {
     handleLogOut().then().catch();
@@ -93,9 +95,16 @@ const Navber = () => {
                 <li>
                   <Link to="/touristprofile"> My Profile</Link>
                 </li>
-                <li>
-                  <Link to="/manageusers"> Manage Users</Link>
-                </li>
+                {users.role === "Admin" && (
+                  <>
+                    <li>
+                      <Link to="/manageusers"> Manage Users</Link>
+                    </li>
+                    <li>
+                      <Link to="/adminProfile">My Profile</Link>
+                    </li>
+                  </>
+                )}
                 <li>
                   <Link to="/turistbooking"> My Bookings</Link>
                 </li>

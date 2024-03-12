@@ -43,6 +43,7 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      setIsloading(true);
       const user = {
         image: currentUser.photoURL,
         name: currentUser.displayName,

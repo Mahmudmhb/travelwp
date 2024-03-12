@@ -1,17 +1,33 @@
-import { useState } from "react";
 import useSecureAxios from "../../../UseProvider/UseSecureAxios/useSecureAxios";
 import Heading from "../../../Sheard/Heading/Heading";
-import { useQuery } from "@tanstack/react-query";
+import useQueryUser from "../../../UseProvider/useQuery/useQuery";
 
 const ManageUsers = () => {
+  const [users, refetch] = useQueryUser();
   const axiosSecure = useSecureAxios();
-  const [users, setUsers] = useState([]);
-  const res = axiosSecure.get("/users").then((res) => {
-    setUsers(res.data);
-  });
+  // const [users, setUsers] = useState([]);
+  // const res = axiosSecure.get("/users").then((res) => {
+  //   setUsers(res.data);
+  // });
+  // console.log(users);
 
-  const HandleUpdate = (item) => {
-    console.log(item);
+  const MakeAdmin = async (user) => {
+    console.log(user);
+    const role = { Admin: "Admin" };
+    const res = await axiosSecure.put(`/users/${user._id}`, role);
+    console.log(res.data);
+    if (res.data.modifiedCount > 0) {
+      refetch();
+    }
+  };
+  const MakeGuide = async (user) => {
+    console.log(user);
+    const role = { Guide: "Tour Guide" };
+    const res = await axiosSecure.put(`/users/${user._id}`, role);
+    console.log(res.data);
+    if (res.data.modifiedCount > 0) {
+      refetch();
+    }
   };
 
   return (
@@ -19,17 +35,16 @@ const ManageUsers = () => {
       <h1>this is manage users</h1>
 
       <Heading heading={"All users"}></Heading>
-      <div>
+      <div className="w-5/6 mx-auto my-10 text-center">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
             <thead>
               <tr>
-                <th></th>
+                <th>Sl no:</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Make Admin</th>
-                <th>Make Guide</th>
+                <th>Role</th>
               </tr>
             </thead>
             <tbody>
@@ -39,16 +54,19 @@ const ManageUsers = () => {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>
-                    <button onClick={() => HandleUpdate(user)} className="btn">
-                      {" "}
-                      Make Admin
-                    </button>
-                  </td>
-                  <td>
-                    <button onClick={() => HandleUpdate(user)} className="btn">
-                      {" "}
-                      Make Guide
-                    </button>
+                    {user.role === "Admin" || user.role === "Tour Guide" ? (
+                      <>{user.role}</>
+                    ) : (
+                      <>
+                        <button onClick={() => MakeAdmin(user)} className="btn">
+                          Make Admin
+                        </button>
+                        <button onClick={() => MakeGuide(user)} className="btn">
+                          {" "}
+                          Make Guide
+                        </button>
+                      </>
+                    )}
                   </td>
                 </tr>
               ))}

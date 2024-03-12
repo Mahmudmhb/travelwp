@@ -16,6 +16,7 @@ import MyBooking from "../Components/Deshboard/MyBooking/MyBooking";
 import MyWishlist from "../Components/Deshboard/MyWishlist/MyWishlist";
 import PrivateRoute from "../Route/PrivateRoute";
 import ManageUsers from "../Components/Admin/ManageUsers/ManageUsers";
+import AdminProfile from "../Components/Admin/AdminProfile/AdminProfile";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
       {
         path: "/manageusers",
         element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "/adminProfile",
+        element: <AdminProfile></AdminProfile>,
       },
     ],
   },

@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import useAxiosPublic from "../../UseProvider/useAxiosPublic/useAxiosPublic";
 import { useEffect, useState } from "react";
-import ShearSlider from "../../Sheard/ShearSlider/ShearSlider";
 import Heading from "../../Sheard/Heading/Heading";
 import Booking from "../Booking/Booking";
 
@@ -14,6 +13,7 @@ const CardDetails = () => {
   useEffect(() => {
     axiosPublic(`/packages/${id}`).then((res) => {
       setDetails(res.data);
+      console.log(res.data);
     });
 
     axiosPublic.get("/tourgaide").then((res) => {

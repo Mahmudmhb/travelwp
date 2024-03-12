@@ -94,6 +94,9 @@ const Navber = () => {
                   <Link to="/touristprofile"> My Profile</Link>
                 </li>
                 <li>
+                  <Link to="/manageusers"> Manage Users</Link>
+                </li>
+                <li>
                   <Link to="/turistbooking"> My Bookings</Link>
                 </li>
                 <li>

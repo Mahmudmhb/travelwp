@@ -15,6 +15,7 @@ import AddTouristStroy from "../Components/Deshboard/TouristDeshboard/AddTourist
 import MyBooking from "../Components/Deshboard/MyBooking/MyBooking";
 import MyWishlist from "../Components/Deshboard/MyWishlist/MyWishlist";
 import PrivateRoute from "../Route/PrivateRoute";
+import ManageUsers from "../Components/Admin/ManageUsers/ManageUsers";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -50,7 +51,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/packages/:id",
-        element: <PrivateRoute></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <CardDetails></CardDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/tourgaidedetails/:id",
@@ -76,7 +81,6 @@ const router = createBrowserRouter([
         path: "/addtoriststory",
         element: (
           <PrivateRoute>
-            {" "}
             <AddTouristStroy></AddTouristStroy>
           </PrivateRoute>
         ),
@@ -93,10 +97,13 @@ const router = createBrowserRouter([
         path: "/mywishlist",
         element: (
           <PrivateRoute>
-            {" "}
             <MyWishlist></MyWishlist>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/manageusers",
+        element: <ManageUsers></ManageUsers>,
       },
     ],
   },

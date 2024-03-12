@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import useAxiosPublic from "../../../UseProvider/useAxiosPublic/useAxiosPublic";
 import Heading from "../../../Sheard/Heading/Heading";
+import useAuth from "../../../Hooks/useAuth/useAuth";
 
 const MyBooking = () => {
   const [bookings, setBooking] = useState([]);
+  const { user } = useAuth();
 
   const axiosPublic = useAxiosPublic();
-  const res = axiosPublic.get("/booking").then((res) => {
+  const res = axiosPublic.get(`/booking/${user.email}`).then((res) => {
     setBooking(res.data);
   });
-  // console.log(bookings);
+
   const totalPrice = bookings.reduce((total, item) => total + item.price, 0);
 
   return (

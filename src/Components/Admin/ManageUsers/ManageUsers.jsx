@@ -11,11 +11,11 @@ const ManageUsers = () => {
   // });
   // console.log(users);
 
-  const MakeAdmin = async (user) => {
-    console.log(user);
+  const MakeAdmin = async (id) => {
+    // console.log(user);
     const role = { Admin: "Admin" };
-    const res = await axiosSecure.put(`/users/${user._id}`, role);
-    console.log(res.data);
+    const res = await axiosSecure.put(`/users/${id}`, role);
+    // console.log(res.data);
     if (res.data.modifiedCount > 0) {
       refetch();
     }
@@ -24,7 +24,7 @@ const ManageUsers = () => {
     console.log(user);
     const role = { Guide: "Tour Guide" };
     const res = await axiosSecure.put(`/users/${user._id}`, role);
-    console.log(res.data);
+    // console.log(res.data);
     if (res.data.modifiedCount > 0) {
       refetch();
     }
@@ -58,7 +58,10 @@ const ManageUsers = () => {
                       <>{user.role}</>
                     ) : (
                       <>
-                        <button onClick={() => MakeAdmin(user)} className="btn">
+                        <button
+                          onClick={() => MakeAdmin(user._id)}
+                          className="btn"
+                        >
                           Make Admin
                         </button>
                         <button onClick={() => MakeGuide(user)} className="btn">

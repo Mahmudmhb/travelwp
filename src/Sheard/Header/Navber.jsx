@@ -2,11 +2,20 @@ import { FaClock, FaLocationArrow, FaPhoneVolume } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import LoginModel from "../../Components/Model/LoginModel";
 import useAuth from "../../Hooks/useAuth/useAuth";
-import useQueryUser from "../../UseProvider/useQuery/useQuery";
+// import useQueryUser from "../../UseProvider/useQuery/useQuery";
+import useSecureAxios from "../../UseProvider/UseSecureAxios/useSecureAxios";
+import { useState } from "react";
 
 const Navber = () => {
   const { user, handleLogOut } = useAuth();
-  const [users] = useQueryUser();
+  const [users, setUsers] = useState([]);
+  // console.log(users.role);
+  // const [users] = useQueryUser();
+  const axiosSecure = useSecureAxios();
+  const res = axiosSecure.get(`/users/${user?.email}`).then((res) => {
+    // console.log(res.data);
+    setUsers(res.data);
+  });
 
   const handleSignOut = () => {
     handleLogOut().then().catch();
@@ -95,16 +104,30 @@ const Navber = () => {
                 <li>
                   <Link to="/touristprofile"> My Profile</Link>
                 </li>
-                {users.role === "Admin" && (
-                  <>
-                    <li>
-                      <Link to="/manageusers"> Manage Users</Link>
-                    </li>
-                    <li>
-                      <Link to="/adminProfile">My Profile</Link>
-                    </li>
-                  </>
-                )}
+                {users.map((user) => (
+                  <div key={user._id}>
+                    {user.role === "Admin" && (
+                      <>
+                        <li>
+                          <Link to="/adminProfile">My Profile</Link>
+                        </li>
+                        <li>
+                          <Link to="/manageusers"> Manage Users</Link>
+                        </li>
+                      </>
+                    )}
+                    {user.role === "Tour Guide" && (
+                      <>
+                        <li>
+                          <Link to="/guideProfile">Guide Profile</Link>
+                        </li>
+                        <li>
+                          <Link to="/MyAssignedTours">My Assigned Tours</Link>
+                        </li>
+                      </>
+                    )}
+                  </div>
+                ))}
                 <li>
                   <Link to="/turistbooking"> My Bookings</Link>
                 </li>

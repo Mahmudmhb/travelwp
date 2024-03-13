@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAxiosPublic from "../../UseProvider/useAxiosPublic/useAxiosPublic";
 import Heading from "../../Sheard/Heading/Heading";
 import useAuth from "../../Hooks/useAuth/useAuth";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Booking = () => {
@@ -50,10 +50,11 @@ const Booking = () => {
         price: details.price,
         bookingName: details.heading1,
         gaideName: data.gaidename,
+        guideEmail: data.email,
         date: startDate,
         status: "In Review",
       };
-      // console.log(booking);
+      console.log(booking);
       const res = await axiosPublic.post("/booking", booking);
       console.log(res.data);
       if (res.data.insertedId) {

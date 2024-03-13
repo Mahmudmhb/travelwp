@@ -16,13 +16,13 @@ const Register = () => {
     const email = data.email;
     handleRegisterWithEmailAndPass(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         handleUpdate(name, Photourl)
           .then((result) => {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: `${result.user.displayName} SuccessFully Register !!`,
+              title: `${result?.user.displayName} SuccessFully Register !!`,
               showConfirmButton: false,
               timer: 1500,
             });
@@ -31,7 +31,7 @@ const Register = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         Swal.fire({
           position: "center",
           icon: "error",
@@ -40,7 +40,7 @@ const Register = () => {
           timer: 2000,
         });
       });
-    console.log(data);
+    // console.log(data);
   };
   return (
     <div className="flex justify-center items-center w-5/6 mx-auto my-10">
@@ -58,22 +58,26 @@ const Register = () => {
             type="text"
             placeholder="Name"
             className="py-3 px-2 w-full  my-2 border shadow-xl rounded-xl"
+            required
             {...register("name")}
           />
           <input
             type="email"
+            required
             placeholder="Email"
             className="py-3 px-2 w-full border  my-2 shadow-xl rounded-xl"
             {...register("email")}
           />
           <input
             type="text"
+            required
             placeholder="Photo Url"
             className="py-3 px-2 w-full border shadow-xl rounded-xl"
             {...register("photourl")}
           />
           <input
             type="password"
+            required
             placeholder="Password"
             className="py-3 px-2 w-full my-2 border shadow-xl rounded-xl"
             {...register("password")}

@@ -6,12 +6,12 @@ import MyBooking from "../MyBooking/MyBooking";
 const TouristProfile = () => {
   const { user } = useAuth();
   return (
-    <div className="md:flex gap-10 w-5/6 mx-auto justify-evenly  my-20">
+    <div className="md:flex-row gap-10 w-5/6 mx-auto justify-evenly  my-20">
       <div className="text-center">
         <img
-          src={user.Photo_URL}
+          src={user.photoURL}
           alt={user.displayName}
-          className="w-96 h-96 border "
+          className="w-96 h-96 border mx-auto"
         />
         <h1 className="uppercase my-5 text-2xl  font-bold">
           {user.displayName}

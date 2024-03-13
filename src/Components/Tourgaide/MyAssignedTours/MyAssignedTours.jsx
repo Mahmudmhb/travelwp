@@ -1,43 +1,62 @@
-import React, { useState } from "react";
-import useAxiosPublic from "../../../UseProvider/useAxiosPublic/useAxiosPublic";
+import { useState } from "react";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import Heading from "../../../Sheard/Heading/Heading";
+import useSecureAxios from "../../../UseProvider/UseSecureAxios/useSecureAxios";
 
 const MyAssignedTours = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useSecureAxios();
   const { user } = useAuth();
-  const [totals, setTotals] = useState();
-  console.log(totals);
-  const { data: guide = "" } = useQuery({
+  const [totals, setTotals] = useState([]);
+  //   console.log(totals);
+  const { data: guide = "", refetch } = useQuery({
     queryKey: ["guide"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/bookings/${user.displayName}`);
+      const res = await axiosSecure.get(`/bookings/${user.displayName}`);
       setTotals(res.data);
     },
   });
+  const handleRejcted = async (total) => {
+    const status = { status: "Reject" };
+    const res = await axiosSecure.put(`/bookings/:${total._id}`, status);
+
+    console.log(res.data);
+    refetch();
+  };
   return (
-    <div>
+    <div className="my-10 w-5/6 mx-auto">
       <Heading heading={"my assigned tour"}></Heading>
       <div>
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
             <thead>
-              <tr>
+              <tr className="text-xl uppercase my-5">
                 <th></th>
-                <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
+                <th>Package</th>
+                <th> tourist name</th>
+                <th> tour date</th>
+                <th> tour price</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
               {totals.map((total, idx) => (
-                <tr key={total._id}>
+                <tr key={total._id} className="text-center">
                   <th>{idx + 1}</th>
-                  <td>{total.name}</td>
-                  <td>Quality Control Specialist</td>
-                  <td>Blue</td>
+                  <td>{total.bookingName}</td>
+                  <td>{total.touristName}</td>
+                  <td>{total.date}</td>
+                  <td>${total.price}</td>
+                  <td className="flex gap-3">
+                    <button className="btn btn-primary">Accept</button>
+                    <button
+                      onClick={() => handleRejcted(total)}
+                      className="btn btn-warning"
+                    >
+                      Reject
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -118,7 +118,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/MyAssignedTours",
-        element: <MyAssignedTours></MyAssignedTours>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MyAssignedTours></MyAssignedTours>
+          </PrivateRoute>
+        ),
       },
     ],
   },

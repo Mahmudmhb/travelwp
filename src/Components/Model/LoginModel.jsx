@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const LoginModel = () => {
   const { register, handleSubmit } = useForm();
-  const { handleLogin } = useAuth();
+  const { handleLogin, handleSignGoolge } = useAuth();
   const onSubmit = (data) => {
     const password = data.password;
     const email = data.email;
@@ -23,6 +23,30 @@ const LoginModel = () => {
       .catch((error) => {
         Swal.fire({
           position: "top-center",
+          icon: "error",
+          title: `${error.message}  !!`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
+  };
+  const hangleGoogleSign = () => {
+    handleSignGoolge()
+      .then((result) => {
+        // console.log(result.user);
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${result?.user.displayName} SuccessFully Register !!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        // console.log(error);
+        Swal.fire({
+          position: "center",
           icon: "error",
           title: `${error.message}  !!`,
           showConfirmButton: false,
@@ -78,7 +102,7 @@ const LoginModel = () => {
               </span>{" "}
             </h1>
             <div className="flex gap-5 justify-center my-5">
-              <button>
+              <button onClick={hangleGoogleSign}>
                 <FaGoogle className="text-2xl duration-300 hover:text-[#ffb300]" />
               </button>
               <button>

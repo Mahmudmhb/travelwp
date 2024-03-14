@@ -26,54 +26,51 @@ const ManageUsers = () => {
   };
 
   return (
-    <div>
-      <h1>this is manage users</h1>
-
+    <div className="w-5/6">
       <Heading heading={"All users"}></Heading>
-      <div className="w-5/6 mx-auto my-10 text-center">
-        <div className=" w-5/6 mx-auto">
-          <table className="table">
-            {/* head */}
-            <thead className="text-2xl border-b-2 border-[#ffb300]">
-              <tr className="text-center">
-                <th>Sl no:</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
+
+      <div className="overflow-x-auto w-full">
+        <table className="table">
+          {/* head */}
+          <thead className="text-2xl border-b-2 border-[#ffb300]">
+            <tr className="text-center">
+              <th>Sl no:</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user, indx) => (
+              <tr key={user._id} className="text-center">
+                <th>{indx + 1}</th>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td className="text-center flex gap-4 justify-center">
+                  {user.role === "Admin" || user.role === "Tour Guide" ? (
+                    <>{user.role}</>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => MakeAdmin(user._id)}
+                        className="btn btn-primary"
+                      >
+                        Make Admin
+                      </button>
+                      <button
+                        onClick={() => MakeGuide(user)}
+                        className="btn btn-success"
+                      >
+                        {" "}
+                        Make Guide
+                      </button>
+                    </>
+                  )}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {users.map((user, indx) => (
-                <tr key={user._id} className="text-center">
-                  <th>{indx + 1}</th>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td className="text-center flex gap-4 justify-center">
-                    {user.role === "Admin" || user.role === "Tour Guide" ? (
-                      <>{user.role}</>
-                    ) : (
-                      <>
-                        <button
-                          onClick={() => MakeAdmin(user._id)}
-                          className="btn btn-primary"
-                        >
-                          Make Admin
-                        </button>
-                        <button
-                          onClick={() => MakeGuide(user)}
-                          className="btn btn-success"
-                        >
-                          {" "}
-                          Make Guide
-                        </button>
-                      </>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

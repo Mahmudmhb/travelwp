@@ -6,7 +6,8 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { handleRegisterWithEmailAndPass, handleUpdate } = useAuth();
+  const { handleRegisterWithEmailAndPass, handleUpdate, handleSignGoolge } =
+    useAuth();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const onSubmit = (data) => {
@@ -41,6 +42,32 @@ const Register = () => {
         });
       });
     // console.log(data);
+  };
+  const hangleGoogleSign = () => {
+    handleSignGoolge()
+      .then((result) => {
+        // console.log(result.user);
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${result?.user.displayName} SuccessFully Register !!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        navigate("/");
+      })
+      .catch((error) => {
+        // console.log(error);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `${error.message}  !!`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
   };
   return (
     <div className="flex justify-center items-center w-5/6 mx-auto my-10">
@@ -98,7 +125,7 @@ const Register = () => {
           </Link>
         </h1>
         <div className="flex gap-5 justify-center my-5">
-          <button>
+          <button onClick={hangleGoogleSign}>
             <FaGoogle className="text-2xl duration-300 hover:text-[#ffb300]" />
           </button>
           <button>

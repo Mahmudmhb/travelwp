@@ -19,6 +19,7 @@ import ManageUsers from "../Components/Admin/ManageUsers/ManageUsers";
 import AdminProfile from "../Components/Admin/AdminProfile/AdminProfile";
 import GuideProfile from "../Components/Tourgaide/GuideProfile/GuideProfile";
 import MyAssignedTours from "../Components/Tourgaide/MyAssignedTours/MyAssignedTours";
+import Deshboard from "../Components/Deshboard/Deshboard";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +28,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "packages/:id",
+        element: (
+          <PrivateRoute>
+            <CardDetails></CardDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "community",
@@ -53,15 +62,7 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/packages/:id",
-        element: (
-          <PrivateRoute>
-            <CardDetails></CardDetails>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/tourgaidedetails/:id",
+        path: "tourgaidedetails/:id",
         element: (
           <PrivateRoute>
             <TourGaideDetails></TourGaideDetails>
@@ -69,11 +70,21 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/touristblogs/:id",
+        path: "touristblogs/:id",
         element: <BlogDetails></BlogDetails>,
       },
+    ],
+  },
+  {
+    path: "deshboard",
+    element: (
+      <PrivateRoute>
+        <Deshboard></Deshboard>
+      </PrivateRoute>
+    ),
+    children: [
       {
-        path: "/touristprofile",
+        path: "touristprofile",
         element: (
           <PrivateRoute>
             <TouristProfile></TouristProfile>
@@ -81,7 +92,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/addtoriststory",
+        path: "addtoriststory",
         element: (
           <PrivateRoute>
             <AddTouristStroy></AddTouristStroy>
@@ -89,15 +100,16 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/turistbooking",
+        path: "turistbooking",
         element: (
           <PrivateRoute>
             <MyBooking></MyBooking>
           </PrivateRoute>
         ),
       },
+
       {
-        path: "/mywishlist",
+        path: "mywishlist",
         element: (
           <PrivateRoute>
             <MyWishlist></MyWishlist>
@@ -105,22 +117,21 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/manageusers",
+        path: "manageusers",
         element: <ManageUsers></ManageUsers>,
       },
       {
-        path: "/adminProfile",
+        path: "adminProfile",
         element: <AdminProfile></AdminProfile>,
       },
       {
-        path: "/guideProfile",
+        path: "guideProfile",
         element: <GuideProfile></GuideProfile>,
       },
       {
-        path: "/MyAssignedTours",
+        path: "MyAssignedTours",
         element: (
           <PrivateRoute>
-            {" "}
             <MyAssignedTours></MyAssignedTours>
           </PrivateRoute>
         ),

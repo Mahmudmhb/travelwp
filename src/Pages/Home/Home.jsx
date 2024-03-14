@@ -1,3 +1,4 @@
+import PhotoAlbam from "../../Components/PhotoAlbam/PhotoAlbam";
 import Slider from "../../Components/Slider/Slider";
 import TourType from "../../Components/TourType/TourType";
 import Tourism from "../../Components/Tourism/Tourism";
@@ -12,6 +13,7 @@ const Home = () => {
       <Slider></Slider>
 
       <Destination></Destination>
+      <PhotoAlbam></PhotoAlbam>
       <Tourism></Tourism>
       <TourType></TourType>
       <TouristBlogs></TouristBlogs>

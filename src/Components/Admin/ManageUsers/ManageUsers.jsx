@@ -31,11 +31,11 @@ const ManageUsers = () => {
 
       <Heading heading={"All users"}></Heading>
       <div className="w-5/6 mx-auto my-10 text-center">
-        <div className="overflow-x-auto">
+        <div className=" w-5/6 mx-auto">
           <table className="table">
             {/* head */}
-            <thead>
-              <tr>
+            <thead className="text-2xl border-b-2 border-[#ffb300]">
+              <tr className="text-center">
                 <th>Sl no:</th>
                 <th>Name</th>
                 <th>Email</th>
@@ -44,22 +44,25 @@ const ManageUsers = () => {
             </thead>
             <tbody>
               {users.map((user, indx) => (
-                <tr key={user._id}>
+                <tr key={user._id} className="text-center">
                   <th>{indx + 1}</th>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
-                  <td>
+                  <td className="text-center flex gap-4 justify-center">
                     {user.role === "Admin" || user.role === "Tour Guide" ? (
                       <>{user.role}</>
                     ) : (
                       <>
                         <button
                           onClick={() => MakeAdmin(user._id)}
-                          className="btn"
+                          className="btn btn-primary"
                         >
                           Make Admin
                         </button>
-                        <button onClick={() => MakeGuide(user)} className="btn">
+                        <button
+                          onClick={() => MakeGuide(user)}
+                          className="btn btn-success"
+                        >
                           {" "}
                           Make Guide
                         </button>

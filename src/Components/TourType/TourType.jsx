@@ -14,7 +14,7 @@ const TourType = () => {
               <img
                 src="https://wanderers.qodeinteractive.com/wp-content/uploads/2018/03/h1-custom-icon-1-hover.png"
                 alt=""
-                className="text-white w-[80px] h-[80px] mx-auto"
+                className="text-white h-[80px] w-[80px] hover:w-[95px] hover:[h-95px] duration-500  mx-auto"
               />
               <h1>Self-Guided</h1>
             </div>
@@ -24,7 +24,7 @@ const TourType = () => {
               <img
                 src="https://wanderers.qodeinteractive.com/wp-content/uploads/2018/03/h1-custom-icon-2-hover.png"
                 alt=""
-                className="text-white w-[80px] h-[80px] mx-auto"
+                className="text-white w-[80px] h-[80px]  hover:w-[95px] hover:[h-95px] duration-500 mx-auto"
               />
               <h1>Cruises</h1>
             </div>
@@ -34,7 +34,7 @@ const TourType = () => {
               <img
                 src="https://wanderers.qodeinteractive.com/wp-content/uploads/2018/03/h1-custom-icon-3-hover.png"
                 alt=""
-                className="text-white w-[80px] h-[80px] mx-auto"
+                className="text-white w-[80px] h-[80px]  hover:w-[95px] hover:[h-95px] duration-500 mx-auto"
               />
               <h1>Adventure</h1>
             </div>
@@ -44,7 +44,7 @@ const TourType = () => {
               <img
                 src="https://wanderers.qodeinteractive.com/wp-content/uploads/2018/03/h1-custom-icon-4-hover.png"
                 alt=""
-                className="text-white w-[80px] h-[80px] mx-auto"
+                className="text-white w-[80px] h-[80px]  hover:w-[95px] hover:[h-95px] duration-500 mx-auto"
               />
               <h1>Wildlife</h1>
             </div>
@@ -54,7 +54,7 @@ const TourType = () => {
               <img
                 src="https://wanderers.qodeinteractive.com/wp-content/uploads/2018/03/h1-custom-icon-5-hover.png"
                 alt=""
-                className="text-white w-[80px] h-[80px] mx-auto"
+                className="text-white w-[80px] h-[80px]  hover:w-[95px] hover:[h-95px] duration-500 mx-auto"
               />
               <h1>Seaside</h1>
             </div>

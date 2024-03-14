@@ -1,8 +1,8 @@
-import AddTouristStroy from "./AddTouristStroy";
+// import AddTouristStroy from "./AddTouristStroy";
 import useAuth from "../../../Hooks/useAuth/useAuth";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import MyBooking from "../MyBooking/MyBooking";
-import MyWishlist from "../MyWishlist/MyWishlist";
+// import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+// import MyBooking from "../MyBooking/MyBooking";
+// import MyWishlist from "../MyWishlist/MyWishlist";
 
 const TouristProfile = () => {
   const { user } = useAuth();
@@ -19,7 +19,7 @@ const TouristProfile = () => {
         </h1>
         <h1>{user.email}</h1>
       </div>
-      <Tabs>
+      {/* <Tabs>
         <TabList className="md:flex  justify-center text-center gap-8 border-b-2 border-[#ffb300] py-3">
           <Tab className="text-2xl hover:text-3xl duration-300 hover:text-[#ffb300] font-bold ">
             My Bookings
@@ -41,7 +41,7 @@ const TouristProfile = () => {
         <TabPanel>
           <AddTouristStroy></AddTouristStroy>
         </TabPanel>
-      </Tabs>
+      </Tabs> */}
     </div>
   );
 };

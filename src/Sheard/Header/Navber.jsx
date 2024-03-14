@@ -3,25 +3,23 @@ import { Link, NavLink } from "react-router-dom";
 import LoginModel from "../../Components/Model/LoginModel";
 import useAuth from "../../Hooks/useAuth/useAuth";
 // import useQueryUser from "../../UseProvider/useQuery/useQuery";
-import useSecureAxios from "../../UseProvider/UseSecureAxios/useSecureAxios";
-import { useState } from "react";
+// import useSecureAxios from "../../UseProvider/UseSecureAxios/useSecureAxios";
+// import { useState } from "react";
 
 const Navber = () => {
-  const { user, handleLogOut } = useAuth();
-  const [users, setUsers] = useState([]);
+  const { user } = useAuth();
+  // const [users, setUsers] = useState([]);
+  // console.log("nav-user", user);
 
-  const handleSignOut = () => {
-    handleLogOut().then().catch();
-  };
   // console.log(users.role);
   // const [users] = useQueryUser();
-  const axiosSecure = useSecureAxios();
-  const handle = async () => {
-    const res = await axiosSecure.get(`/users/${user?.email}`);
-    // console.log(res.data);
-    setUsers(res.data);
-  };
-  handle();
+  // const axiosSecure = useSecureAxios();
+  // const handle = async () => {
+  //   const res = await axiosSecure.get(`/users/${user?.email}`);
+  //   // console.log(res.data);
+  //   setUsers(res.data);
+  // };
+  // handle();
 
   const nav = (
     <>
@@ -40,20 +38,31 @@ const Navber = () => {
       <li>
         <NavLink to="/blogs"> Blogs</NavLink>
       </li>
-      {user && (
-        <li>
-          <NavLink>
-            {" "}
-            <button onClick={handleSignOut}>Log Out</button>
-          </NavLink>
-        </li>
+
+      {user ? (
+        <>
+          <li>
+            <Link to="deshboard/touristprofile">Deshboard</Link>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <div className=" gap-3">
+              <LoginModel></LoginModel>
+            </div>
+          </li>
+          <li>
+            <NavLink to="/register"> Register</NavLink>
+          </li>
+        </>
       )}
     </>
   );
   return (
     <div className="border-b-2">
       <div className="bg-[#414b4f]">
-        <div className="flex items-center justify-between w-5/6 mx-auto h-12 text-white">
+        <div className="md:flex hidden items-center justify-between w-5/6 mx-auto h-12 text-white">
           <h1 className="flex items-center gap-3">
             <FaClock />
             Mon - Sat 8.00 - 18.00
@@ -71,7 +80,11 @@ const Navber = () => {
       <div className="navbar    w-5/6 font-bold mx-auto uppercase text-xl ">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn z-10 btn-ghost lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -89,7 +102,7 @@ const Navber = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {nav}
             </ul>
@@ -102,58 +115,15 @@ const Navber = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{nav}</ul>
         </div>
-        {user?.email ? (
+        {user?.email && (
           <>
-            <div className="dropdown dropdown-bottom">
-              <div tabIndex={0} role="button" className="btn  m-1">
-                Dashboard
-              </div>
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <Link to="/touristprofile"> My Profile</Link>
-                </li>
-                {users.map((customar) => (
-                  <div key={user._id}>
-                    {customar.role === "Admin" && (
-                      <>
-                        <li>
-                          <Link to="/manageusers"> Manage Users</Link>
-                        </li>
-                      </>
-                    )}
-                    {customar.role === "Tour Guide" && (
-                      <>
-                        <li>
-                          <Link to="/guideProfile">Guide Profile</Link>
-                        </li>
-                        <li>
-                          <Link to="/MyAssignedTours">My Assigned Tours</Link>
-                        </li>
-                      </>
-                    )}
-                  </div>
-                ))}
-                <li>
-                  <Link to="/turistbooking"> My Bookings</Link>
-                </li>
-                <li>
-                  <Link to="/mywishlist">My Wishlist</Link>
-                </li>
-                <li>
-                  <button onClick={handleSignOut}>LogOut</button>
-                </li>
-              </ul>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="navbar-end gap-3">
-              <LoginModel></LoginModel>
-
-              <NavLink to="/register"> Register</NavLink>
+            <div className="flex items-center gap-3">
+              <img
+                src={user.photoURL}
+                alt=""
+                className="w-14 h-14 rounded-full"
+              />
+              <h1>{user.displayName}</h1>
             </div>
           </>
         )}

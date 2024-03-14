@@ -2,7 +2,7 @@ import Heading from "../../Sheard/Heading/Heading";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Card from "../Card/Card";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Tourgaide from "../Tourgaide/Tourgaide";
 import "../TourType/tourtype.css";
 

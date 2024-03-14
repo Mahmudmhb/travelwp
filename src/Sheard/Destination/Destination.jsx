@@ -38,7 +38,7 @@ const Destination = () => {
             <img
               src="https://travelwp.physcode.com/wp-content/uploads/2024/01/brazil-destination-370x370.jpg"
               alt=""
-              className="rounded-[50%]"
+              className="rounded-[50%] hover:p-2 duration-300"
             />
           </div>
           <div className="uppercase text-center text-white hover:text-3xl duration-500  absolute bottom-[20%] left-[30%]  text-2xl">
@@ -50,7 +50,7 @@ const Destination = () => {
             <img
               src="https://travelwp.physcode.com/wp-content/uploads/2024/01/ottawa-canada-370x370.jpg"
               alt=""
-              className="rounded-[50%]"
+              className="rounded-[50%] hover:p-2 duration-300"
             />
           </div>
           <div className="uppercase text-center text-white hover:text-3xl duration-500  absolute bottom-[20%] left-[30%]  text-2xl">
@@ -62,7 +62,7 @@ const Destination = () => {
             <img
               src="https://travelwp.physcode.com/wp-content/uploads/2024/01/cuba-old-havana-370x370.jpg"
               alt=""
-              className="rounded-[50%]"
+              className="rounded-[50%] hover:p-2 duration-300"
             />
           </div>
           <div className="uppercase text-center text-white hover:text-3xl duration-500  absolute bottom-[20%] left-[30%]  text-2xl">
@@ -74,7 +74,7 @@ const Destination = () => {
             <img
               src="https://travelwp.physcode.com/wp-content/uploads/2016/10/25656857141_edcdf5e6e3_o.jpg"
               alt=""
-              className="rounded-[50%]"
+              className="rounded-[50%] hover:p-2 duration-300"
             />
           </div>
           <div className="uppercase text-center text-white hover:text-3xl duration-500  absolute bottom-[20%] left-[30%]  text-2xl">
@@ -86,7 +86,7 @@ const Destination = () => {
             <img
               src="https://travelwp.physcode.com/wp-content/uploads/2017/01/photo-1474181487882-5abf3f0ba6c2.jpg"
               alt=""
-              className="rounded-[50%]"
+              className="rounded-[50%] hover:p-2 duration-300"
             />
           </div>
           <div className="uppercase text-center text-white hover:text-3xl duration-500  absolute bottom-[20%] left-[30%]  text-2xl">
@@ -98,7 +98,7 @@ const Destination = () => {
             <img
               src="https://travelwp.physcode.com/wp-content/uploads/2017/03/washington_dc.jpg"
               alt=""
-              className="rounded-[50%]"
+              className="rounded-[50%] hover:p-2 duration-300"
             />
           </div>
           <div className="uppercase text-center text-white hover:text-3xl duration-500  absolute bottom-[20%] left-[30%]  text-2xl">

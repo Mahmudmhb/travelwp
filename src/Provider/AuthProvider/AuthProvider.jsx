@@ -36,29 +36,31 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
     setIsloading(true);
 
-    return signOut(auth);
+    return signOut(auth).then(() => setUser(null));
   };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
       // console.log(currentUser);
-      const user = {
-        image: currentUser.photoURL,
-        name: currentUser.displayName,
-        email: currentUser.email,
-      };
-      // console.log(user);
-      const res = await axiosPublic.post("/users", user);
-      // console.log(res.data);
+      if (currentUser) {
+        setUser(currentUser);
+        const user = {
+          image: currentUser.photoURL,
+          name: currentUser.displayName,
+          email: currentUser.email,
+        };
+        const res = await axiosPublic.post("/users", user);
+      }
 
-      setUser(currentUser);
+      // console.log(res.data);
 
       setIsloading(false);
     });
     return () => unSubscribe();
-  }, [axiosPublic]);
+  }, [axiosPublic, user]);
 
   const authInfo = {
     handleRegisterWithEmailAndPass,

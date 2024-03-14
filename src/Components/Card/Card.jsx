@@ -72,10 +72,11 @@ const Card = () => {
               <p>{item.description}</p>
               <div className="card-actions justify-end">
                 <Link to={`/packages/${item._id}`}>
-                  {" "}
                   <button className="badge badge-outline">View Package</button>
                 </Link>
-                <button className="badge badge-outline">My Wishlist</button>
+                <Link to="/deshboard/mywishlist">
+                  <button className="badge badge-outline">My Wishlist</button>
+                </Link>
               </div>
             </div>
           </div>

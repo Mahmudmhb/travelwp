@@ -17,8 +17,16 @@ const MyAssignedTours = () => {
     },
   });
   const handleRejcted = async (total) => {
-    const status = { status: "Reject" };
-    const res = await axiosSecure.put(`/bookings/:${total._id}`, status);
+    const status = { status: "Rejected" };
+    const res = await axiosSecure.put(`/bookings/${total._id}`, status);
+
+    console.log(res.data);
+    refetch();
+  };
+
+  const handleAccept = async (total) => {
+    const status = { status: "Accepted" };
+    const res = await axiosSecure.put(`/bookings/${total._id}`, status);
 
     console.log(res.data);
     refetch();
@@ -49,13 +57,25 @@ const MyAssignedTours = () => {
                   <td>{total.date}</td>
                   <td>${total.price}</td>
                   <td className="flex gap-3">
-                    <button className="btn btn-primary">Accept</button>
-                    <button
-                      onClick={() => handleRejcted(total)}
-                      className="btn btn-warning"
-                    >
-                      Reject
-                    </button>
+                    {total.status === "Accepted" ||
+                    total.status === "Rejected" ? (
+                      <>{total.status}</>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => handleAccept(total)}
+                          className="btn btn-primary"
+                        >
+                          Accept
+                        </button>
+                        <button
+                          onClick={() => handleRejcted(total)}
+                          className="btn btn-warning"
+                        >
+                          Reject
+                        </button>
+                      </>
+                    )}
                   </td>
                 </tr>
               ))}

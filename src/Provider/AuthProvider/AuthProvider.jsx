@@ -47,7 +47,6 @@ const AuthProvider = ({ children }) => {
       const user = {
         image: currentUser.photoURL,
         name: currentUser.displayName,
-
         email: currentUser.email,
       };
       // console.log(user);

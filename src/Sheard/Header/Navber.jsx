@@ -9,17 +9,20 @@ import { useState } from "react";
 const Navber = () => {
   const { user, handleLogOut } = useAuth();
   const [users, setUsers] = useState([]);
-  // console.log(users.role);
-  // const [users] = useQueryUser();
-  const axiosSecure = useSecureAxios();
-  const res = axiosSecure.get(`/users/${user?.email}`).then((res) => {
-    // console.log(res.data);
-    setUsers(res.data);
-  });
 
   const handleSignOut = () => {
     handleLogOut().then().catch();
   };
+  // console.log(users.role);
+  // const [users] = useQueryUser();
+  const axiosSecure = useSecureAxios();
+  const handle = async () => {
+    const res = await axiosSecure.get(`/users/${user?.email}`);
+    // console.log(res.data);
+    setUsers(res.data);
+  };
+  handle();
+
   const nav = (
     <>
       <li>
@@ -37,6 +40,14 @@ const Navber = () => {
       <li>
         <NavLink to="/blogs"> Blogs</NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink>
+            {" "}
+            <button onClick={handleSignOut}>Log Out</button>
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (
@@ -104,19 +115,16 @@ const Navber = () => {
                 <li>
                   <Link to="/touristprofile"> My Profile</Link>
                 </li>
-                {users.map((user) => (
+                {users.map((customar) => (
                   <div key={user._id}>
-                    {user.role === "Admin" && (
+                    {customar.role === "Admin" && (
                       <>
-                        <li>
-                          <Link to="/adminProfile">My Profile</Link>
-                        </li>
                         <li>
                           <Link to="/manageusers"> Manage Users</Link>
                         </li>
                       </>
                     )}
-                    {user.role === "Tour Guide" && (
+                    {customar.role === "Tour Guide" && (
                       <>
                         <li>
                           <Link to="/guideProfile">Guide Profile</Link>
@@ -135,9 +143,7 @@ const Navber = () => {
                   <Link to="/mywishlist">My Wishlist</Link>
                 </li>
                 <li>
-                  <Link>
-                    <button onClick={handleSignOut}>LogOut</button>
-                  </Link>
+                  <button onClick={handleSignOut}>LogOut</button>
                 </li>
               </ul>
             </div>

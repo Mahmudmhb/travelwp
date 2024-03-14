@@ -63,7 +63,7 @@ const Booking = () => {
           icon: "success",
           title: `“Confirm your Booking”`,
           showConfirmButton: false,
-          timer: 5000,
+          timer: 1500,
         });
       }
     }

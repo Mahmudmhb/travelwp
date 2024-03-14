@@ -51,56 +51,77 @@ const MyWishlist = () => {
   return (
     <div className="my-20 w-5/6 mx-auto">
       <Heading heading={"my wishlist"}></Heading>
-      <div>
-        <h1 className="text-center text-2xl uppercase my-5 font-bold">
-          Total Wishlist : {mywishlist.length}
-        </h1>
-        <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr className="text-2xl border">
-                <th></th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Price</th>
-                <th>Delete</th>
-                <th>View Packages</th>
-              </tr>
-            </thead>
-            <tbody>
-              {mywishlist.map((wishlist, indx) => (
-                <tr key={wishlist._id} className="bg-base-200">
-                  <th>{indx + 1}</th>
-                  <td>{wishlist.name}</td>
-                  <td>{wishlist.userEmail}</td>
-                  <td>{wishlist.price}</td>
-                  <td>
-                    <button
-                      onClick={() => HandleDelete(wishlist)}
-                      className="btn   hover:text-[#ffb300] hover:text-2xl "
-                    >
-                      <FaTrash className="duration-300"></FaTrash>
-                    </button>
-                  </td>
-                  <td>
-                    <button className="hover:text-[#ffb300] hover:text-xl ">
-                      {" "}
-                      <Link
-                        className="  duration-700"
-                        to={`/packages/${wishlist._id}`}
-                      >
-                        View Details
-                      </Link>
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              {/* row 1 */}
-            </tbody>
-          </table>
-        </div>
-      </div>
+
+      {mywishlist.length === 0 ? (
+        <>
+          <div className="text-2xl font-bold text-center ">
+            <h1>You don`t have Any Wishlist list</h1>
+            <p>
+              See Our All Packages -
+              <Link
+                to="/allpackages"
+                className="uppercase border-b-2 hover:text-xl duration-700 border-b-[#ffb300] text-[#ffb300]"
+              >
+                {" "}
+                All Packages
+              </Link>
+            </p>
+          </div>
+        </>
+      ) : (
+        <>
+          <div>
+            <h1 className="text-center text-2xl uppercase my-5 font-bold">
+              Total Wishlist : {mywishlist.length}
+            </h1>
+            <div className="overflow-x-auto">
+              <table className="table">
+                {/* head */}
+                <thead>
+                  <tr className="text-2xl border">
+                    <th></th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Price</th>
+                    <th>Delete</th>
+                    <th>View Packages</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {mywishlist.map((wishlist, indx) => (
+                    <tr key={wishlist._id} className="bg-base-200">
+                      <th>{indx + 1}</th>
+                      <td>{wishlist.name}</td>
+                      <td>{wishlist.userEmail}</td>
+                      <td>{wishlist.price}</td>
+                      <td>
+                        <button
+                          onClick={() => HandleDelete(wishlist)}
+                          className="btn   hover:text-[#ffb300] hover:text-2xl "
+                        >
+                          <FaTrash className="duration-300"></FaTrash>
+                        </button>
+                      </td>
+                      <td>
+                        <button className="hover:text-[#ffb300] hover:text-xl ">
+                          {" "}
+                          <Link
+                            className="  duration-700"
+                            to={`/packages/${wishlist._id}`}
+                          >
+                            View Details
+                          </Link>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                  {/* row 1 */}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -5,15 +5,10 @@ import useQueryUser from "../../../UseProvider/useQuery/useQuery";
 const ManageUsers = () => {
   const [users, refetch] = useQueryUser();
   const axiosSecure = useSecureAxios();
-  // const [users, setUsers] = useState([]);
-  // const res = axiosSecure.get("/users").then((res) => {
-  //   setUsers(res.data);
-  // });
-  // console.log(users);
 
   const MakeAdmin = async (id) => {
     // console.log(user);
-    const role = { Admin: "Admin" };
+    const role = { status: "Admin" };
     const res = await axiosSecure.put(`/users/${id}`, role);
     // console.log(res.data);
     if (res.data.modifiedCount > 0) {
@@ -22,7 +17,7 @@ const ManageUsers = () => {
   };
   const MakeGuide = async (user) => {
     console.log(user);
-    const role = { Guide: "Tour Guide" };
+    const role = { status: "Tour Guide" };
     const res = await axiosSecure.put(`/users/${user._id}`, role);
     // console.log(res.data);
     if (res.data.modifiedCount > 0) {

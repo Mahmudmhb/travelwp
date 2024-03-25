@@ -20,6 +20,7 @@ import AdminProfile from "../Components/Admin/AdminProfile/AdminProfile";
 import GuideProfile from "../Components/Tourgaide/GuideProfile/GuideProfile";
 import MyAssignedTours from "../Components/Tourgaide/MyAssignedTours/MyAssignedTours";
 import Deshboard from "../Components/Deshboard/Deshboard";
+import Bikroy from "../Components/Bikroy/Bikroy";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/bikroy",
+        element: <Bikroy></Bikroy>,
       },
       {
         path: "packages/:id",

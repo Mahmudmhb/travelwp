@@ -76,7 +76,11 @@ const router = createBrowserRouter([
       },
       {
         path: "touristblogs/:id",
-        element: <BlogDetails></BlogDetails>,
+        element: (
+          <PrivateRoute>
+            <BlogDetails></BlogDetails>
+          </PrivateRoute>
+        ),
       },
     ],
   },

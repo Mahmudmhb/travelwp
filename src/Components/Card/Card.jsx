@@ -12,6 +12,7 @@ const Card = () => {
   const axiosPublic = useAxiosPublic();
   axiosPublic.get("/packages").then((res) => {
     setCard(res.data);
+    console.log(res.data);
   });
 
   const handleaddtoCart = async (item) => {

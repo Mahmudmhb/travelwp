@@ -1,0 +1,23 @@
+.tab-buttons button {
+    background-color: #f0f0f0;
+    border: none;
+    color: #333;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+    border-bottom: 2px solid;
+}
+
+.tab-buttons button.active-tab {
+    background-color: #ef4b4b;
+    color: white;
+}
+
+.tab-buttons button:hover {
+    background-color: #e5e5e5;
+}
+
+.overview {
+    background-image: url('https://roam.qodeinteractive.com/wp-content/uploads/2017/08/h1-parallax-2.jpg');
+}
